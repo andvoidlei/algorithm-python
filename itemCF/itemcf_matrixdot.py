@@ -1,13 +1,12 @@
 # coding = utf-8
-# Please feel free to contact with me if you have any question with the code.
-__author__ = 'wangjinkun@mail.hfut.edu.cn'
+
 import numpy as np
 import time
 def load_matrix(filename, num_users, num_items):
     t0 = time.time()
     matrix = np.zeros((num_users,num_items))
     for line in open(filename):
-        user,item,_,_ = line.split()
+        user,item,_ = line.split(',')
         user = int(user)
         item = int(item)
         count = 1.0
@@ -26,8 +25,9 @@ class ItemCF:
         train = self.traindata
         num_items = self.num_items
         self.item_similarity = np.zeros((num_items,num_items))
+        #0...num_items  遍历
         for i in np.arange(0,num_items):
-            r_i = train[:,i]
+            r_i = train[:,i] #获取i列
             self.item_similarity[i,i] = 0
             for j in np.arange(i+1,num_items):
                 r_j = train[:,j]
@@ -40,6 +40,10 @@ class ItemCF:
                 self.item_similarity[i,j] = cos
                 self.item_similarity[j,i] = cos
         self.item_neighbor = np.argsort(-self.item_similarity)
+        print('item_similarity:')
+        print(self.item_similarity)
+        print('item_neighbor:')
+        print(self.item_neighbor)
         t1 = time.time()
         print ('Finished calculating similarity matrix in %f seconds' % (t1-t0))
     def Recommendation(self,user_id,kNN,top_N):
@@ -86,8 +90,9 @@ class ItemCF:
 def test():
     kNN = [80]
     top_N = [20]
-    train = load_matrix('ua.base',943,1682)
-    test = load_matrix('ua.test',943,1682)
+    train = load_matrix('./../data/aaa.txt',8,9)
+    test = load_matrix('./../data/aaa.txt',8,9)
+    print(test)
     kNNItemCF = ItemCF(train,test)
     kNNItemCF.ItemSimilarity()
     print ("%10s %10s %20s%20s" % ('kNN','top_N',"precision",'recall'))
