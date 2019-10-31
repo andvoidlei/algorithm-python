@@ -9,9 +9,9 @@
 
 信息熵为信息的期望值，熵是用来度量随机变量的不确定性。数学公式表达如下：
 
-```math
-H\left ( X \right )= \sum_{i=1}^{n}p\left ( x_{i} \right )I\left ( x_{i} \right )=-\sum_{i=1}^{n}p\left ( x_{i} \right )log_{b} p\left ( x_{i} \right )
-```
+
+![image](https://github.com/andvoidlei/algorithm-python/blob/master/document/CodeCogsEqn.gif?raw=true)
+
 其中负号是用来保证信息量是正数或者零。H(X)就被称为随机变量x的熵，它是对所有可能发生的事件产生的信息量的期望。从公式可以得出结论：随机变量的取值个数越多，状态数也就越多，信息熵就越大，不确定性就越大。
 
 ### 第一步  熵计算
