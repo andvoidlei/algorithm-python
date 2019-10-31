@@ -7,6 +7,7 @@
 
 from numpy import *
 from cal_entropy import cal_entropy as cetr
+from split_by_entropy import  Split_Data,Split_by_entropy
 
 
 def create_data():
@@ -24,3 +25,7 @@ if __name__ == '__main__':
     print(myData)
     '''计算熵值'''
     print('熵值：'+str(cetr(myData)))
+    print(Split_Data(myData,0,1))
+    #print(Split_by_entropy(myData))
+
+
