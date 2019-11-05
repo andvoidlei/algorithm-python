@@ -12,6 +12,7 @@ def Split_Data(dataset, axis, value):
     '''
     使用传入的axis以及value划分数据集
     axis代表在每个列表中的第X位，value为用来划分的特征值
+    输出非axis特征值及结果
     '''
     new_subset = []
     # 利用循环将不符合value的特征值划分入另一集合
@@ -19,11 +20,11 @@ def Split_Data(dataset, axis, value):
     for vec in dataset:
         if vec[axis] == value:
             feature_split = vec[:axis]
+            print(vec[:axis])
             feature_split.extend(vec[axis + 1:])
             new_subset.append(feature_split)
     # extend将VEC中的元素一一纳入feature_split
     # append则将feature_split作为列表结合进目标集合
-    print('>>>'+str(new_subset))
 
     return new_subset
 
