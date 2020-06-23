@@ -25,7 +25,7 @@ if __name__ == '__main__':
     print(myData)
     '''计算熵值'''
     print('熵值：'+str(cetr(myData)))
-    print(Split_Data(myData,0,1))
+    print(Split_Data(myData,0,1))  #Split_Data(dataset, axis, value)
     #print(Split_by_entropy(myData))
 
 
